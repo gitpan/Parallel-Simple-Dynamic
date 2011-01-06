@@ -71,11 +71,11 @@ __END__
 
 =head1 NAME
 
-Parallel::Simple::Dynamic - executes the block of program code in parallel on several processors 
+Parallel::Simple::Dynamic - dynamically splits a big list of data into several parts for processing them in parallel 
 
 =head1 VERSION
 
-This document describes Parallel::Simple::Dynamic version 0.0.1
+This document describes Parallel::Simple::Dynamic version 0.0.2
 
 =head1 SYNOPSIS
 
@@ -84,21 +84,21 @@ This document describes Parallel::Simple::Dynamic version 0.0.1
 	# A list of items
 	my @list;
 	
-	# Creat a new object
+	# Create a new object
 	my $psd = Parallel::Simple::Dynamic->new();
 
-	# Execute the call_back subroutine in 4 parallel processes 
+	# Splits a list of data into 4 segments and then processes them (call_back subroutine) in parallel 
 	my @result = $psd->drun( { call_back => \&call_back, parts => 4, list => \@list } );
 
 	exit;
 	
 =head1 DESCRIPTION
 
-There are some problems in bioinformatics and other fields that can be separated into a number of parallel tasks 
-with no dependency between them (embarrassingly parallel problem).  
+There are some problems in bioinformatics and other fields that can be separated into a number of parts 
+with no dependency between them (embarrassingly parallel problems). Parallel processing of these partitions may remarkably reduce time for solving this kind of problems.  
 
-Parallel::Simple::Dynamic is an object-oriented module that can be used for execution of this kind of tasks 
-in parallel on multiple processor systems. This can remarkably reduce time of running the program and solving the problem. 
+Parallel::Simple::Dynamic is an object-oriented module that can dynamically divide a list of data into separate parts and process all of them in parallel on multiple processor system. 
+Parallel processing is implemented by using Parallel::Simple module by Ofer Nave (L<Parallel::Simple>). 
 
 =head1 METHODS 
 
@@ -106,9 +106,24 @@ in parallel on multiple processor systems. This can remarkably reduce time of ru
 
 =item B<drun>
 
-Processes each segment of data-set in parallel on separate processor.
-There are three properties of C<drun> method needs to be specified. I<list> is a set of data that needs to be processed, 
-I<call_back> is a subroutine that needs to be executed on this set of data, and I<parts> is a number of processors what you want to use. 
+Processes each segment of data-set in parallel on separate processor (see L<Parallel::Simple>).
+There are three properties of C<drun> method needs to be specified:
+
+=over
+
+=item *
+
+I<list> is a set of data that needs to be processed
+
+=item *
+
+I<call_back> is a subroutine that needs to be executed on this set of data
+
+=item * 
+
+I<parts> is a number of processors what you want to use
+
+=back
 
 =item B<partition>
 
@@ -124,13 +139,13 @@ Splits the set of data into separate independent segments
 
 	Class::Std;
 	Class::Std::Utils;
-	Parallel::Simple qw( prun );
-	POSIX qw(ceil);
+	Parallel::Simple;
+	POSIX;
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Aleksandra Markovets, C<< <marsa@cpan.org> >>
-Roger A Hall, C<< <rogerhall@cpan.org> >>
+	Aleksandra Markovets, C<< <marsa@cpan.org> >>
+	Roger A Hall, C<< <rogerhall@cpan.org> >>
 
 =head1 BUGS
 
@@ -140,7 +155,7 @@ automatically be notified of progress on your bug as I make changes.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Aleksandra Markovets.
+Copyright 2011 Aleksandra Markovets.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

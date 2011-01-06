@@ -13,7 +13,7 @@ my $psd = Parallel::Simple::Dynamic->new();
 #my @result = $psd->partition({parts => 4, list => \@list});
 #foreach $element (@result) {print join(',',@$element), "\n";}
 
-my @result = $psd->drun( { call_back => \&call_back, parts => 4, list => \@list } );
+my @result = $psd->drun( { call_back => \&call_back, parts => 9, list => \@list } );
 
 exit;
 
