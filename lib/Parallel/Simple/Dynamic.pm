@@ -33,8 +33,7 @@ use strict;
 			push @prun, $prun;
 			}
 		prun( @prun ) or die( Parallel::Simple::errplus() );
-
-		}	
+	}	
 	
 	sub partition {
 		my ( $self, $arg_ref ) = @_;
@@ -43,7 +42,6 @@ use strict;
 		my $list  =  defined $arg_ref->{list}  ? $arg_ref->{list}  : [];
 		my @results;
 		my @segments = $self->calc_segments( {parts => $parts, list_length => scalar( @$list )} );
-		#print "Segments: " . join( ', ', @segments ) . "\n";
 		for ( my $i = 1; $i <= $parts; $i++ ) {
 			my $start   = $segments[$i-1];
 			my $end     = $segments[$i] - 1;
@@ -121,7 +119,9 @@ I<call_back> is a subroutine that needs to be executed on this set of data
 
 =item * 
 
-I<parts> is a number of processors what you want to use
+I<parts> is a number of processors what you want to use. We assign each instance to a default of 2 parts:
+
+	my $parts=defined $arg_ref->{parts}?$arg_ref->{parts}:2;
 
 =back
 
@@ -144,8 +144,8 @@ Splits the set of data into separate independent segments
 
 =head1 AUTHORS
 
-	Aleksandra Markovets, C<< <marsa@cpan.org> >>
-	Roger A Hall, C<< <rogerhall@cpan.org> >>
+	Aleksandra Markovets, <marsa@cpan.org>
+	Roger A Hall, <rogerhall@cpan.org>
 
 =head1 BUGS
 
@@ -164,4 +164,3 @@ by the Free Software Foundation; or the Artistic License.
 See F<http://dev.perl.org/licenses/ for more information>
 
 =cut
-

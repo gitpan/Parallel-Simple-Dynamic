@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME                => 'Parallel::Simple::Dynamic',
-    AUTHOR              => q{Aleksandra Markovets <marsa@cpan.org>},
+    AUTHOR              => 'Aleksandra Markovets <marsa@cpan.org>',
     VERSION_FROM        => 'lib/Parallel/Simple/Dynamic.pm',
     ABSTRACT_FROM       => 'lib/Parallel/Simple/Dynamic.pm',
     ($ExtUtils::MakeMaker::VERSION >= 6.3002
@@ -12,7 +12,10 @@ WriteMakefile(
       : ()),
     PL_FILES            => {},
     PREREQ_PM => {
-        'Test::More' => 0,
+        'Test::More'  	    => 0,
+	'version'           => 0,
+	'Class::Std::Utils' => 0.0.3,
+	'Parallel::Simple'  => 0.0.1,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Parallel-Simple-Dynamic-*' },

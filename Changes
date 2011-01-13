@@ -1,5 +1,13 @@
 Revision history for Parallel-Simple-Dynamic
 
-0.01    Date/time
-        First version, released on an unsuspecting world.
+0.03	Thu Jan 13 14:10:00 2011
+	Text/POD correction
+	Edited Makefile.PL by adding information about depending modules
+	Edited README file
+
+0.02	Thu Jan 06 18:00:00 2011 
+	Text/POD correction 
+
+0.01    Thu Jan 06 15:00:00 2011 
+        First version, initial release
 
