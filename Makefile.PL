@@ -14,8 +14,9 @@ WriteMakefile(
     PREREQ_PM => {
         'Test::More'  	    => 0,
 	'version'           => 0,
-	'Class::Std::Utils' => 0.0.3,
-	'Parallel::Simple'  => 0.0.1,
+	'Class::Std'        => 0,
+	'Class::Std::Utils' => 0,
+	'Parallel::Simple'  => 0,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Parallel-Simple-Dynamic-*' },

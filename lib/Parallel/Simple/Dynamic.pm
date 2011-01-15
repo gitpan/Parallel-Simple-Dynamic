@@ -5,6 +5,8 @@ use Class::Std::Utils;
 use POSIX qw(ceil);
 use Parallel::Simple qw( prun );
 
+use version; our $VERSION = qv('0.0.4');
+
 use warnings; 
 use strict;
 
@@ -73,7 +75,7 @@ Parallel::Simple::Dynamic - dynamically splits a big list of data into several p
 
 =head1 VERSION
 
-This document describes Parallel::Simple::Dynamic version 0.0.2
+This document describes Parallel::Simple::Dynamic version 0.0.4
 
 =head1 SYNOPSIS
 

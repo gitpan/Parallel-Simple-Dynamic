@@ -1,4 +1,4 @@
-Parallel-Simple-Dynamic 0.0.3
+Parallel-Simple-Dynamic 0.0.4
 
 This module can be used for partition a big list of data into separate parts 
 and processing all of them in parallel on multiple processor system.
